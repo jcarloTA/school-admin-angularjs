@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+  <html lang="en" ng-app="adminApp" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Viaro admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+    <!-- {{!-- STYLES  --}} -->
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <div ng-controller="NavController">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">School Admin</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul  class="navbar-nav ml-auto" ng-if="!isAuth">
+                <li class="nav-item">
+                    <a href="#!/auth/signin" class="nav-link">SignIn</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#!/auth/signup" class="nav-link">SignUp</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" ng-if="isAuth">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Students
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#!/admin/students">See student list</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#!/admin/students/add">Add Student</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Teachers
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#!/links">See teachers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#!/links/add">add teacher</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Grados
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#!/links">See grades</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#!/links/add">Add grades</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Assigns
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#!/links">Ver assigns</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#!/links/add">Agregar assigns</a>
+                  </div>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div ng-view></div>
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/moment/moment.js"></script>
+    <script src="lib/angular-moment/angular-moment.min.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Routes -->
+    <script src="admin/auth/auth.js"></script>
+    <script src="admin/students/students.js"></script>
+    
+    <!-- Servcies -->
+    <script src="core/services/auth.servcies.js"></script>
+    <script src="core/services/assigns.services.js"></script>
+    <script src="core/services/grades.services.js"></script>
+    <script src="core/services/students.services.js"></script>
+    <script src="core/services/teachers.service.js"></script>
+    
+  </body>
+</html>
