@@ -7,17 +7,32 @@ angular.module('adminApp.grades', ['ngRoute'])
   .when('/admin/grades', 
   {
     templateUrl: 'admin/grades/grades.read.delete.html',
-    controller: 'ReadDeleteControllerGrades'
+    controller: 'ReadDeleteControllerGrades',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   .when('/admin/grades/add', 
   {
     templateUrl: 'admin/grades/grades.add.html',
-    controller: 'AddControllerGrades'
+    controller: 'AddControllerGrades',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   .when('/admin/grades/edit/:id', 
   {
     templateUrl: 'admin/grades/grades.edit.html',
-    controller: 'EditControllerGrades'
+    controller: 'EditControllerGrades',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   
 }])

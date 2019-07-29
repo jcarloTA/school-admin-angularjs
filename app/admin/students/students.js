@@ -7,17 +7,32 @@ angular.module('adminApp.students', ['ngRoute'])
   .when('/admin/students', 
   {
     templateUrl: 'admin/students/students.read.delete.html',
-    controller: 'ReadDeleteControllerStudent'
+    controller: 'ReadDeleteControllerStudent',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   .when('/admin/students/add', 
   {
     templateUrl: 'admin/students/students.add.html',
-    controller: 'AddControllerStudent'
+    controller: 'AddControllerStudent',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   .when('/admin/students/edit/:id', 
   {
     templateUrl: 'admin/students/students.edit.html',
-    controller: 'EdditControllerStudent'
+    controller: 'EdditControllerStudent',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   
 }])

@@ -26,10 +26,10 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul  class="navbar-nav ml-auto" ng-if="!isAuth">
                 <li class="nav-item">
-                    <a href="#!/auth/signin" class="nav-link">SignIn</a>
+                    <a href="#!/admin/auth/signin" class="nav-link">SignIn</a>
                 </li>
                 <li class="nav-item">
-                  <a href="#!/auth/signup" class="nav-link">SignUp</a>
+                  <a href="#!/admin/auth/signup" class="nav-link">SignUp</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto" ng-if="isAuth">
@@ -68,10 +68,15 @@
                       Assigns
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#!/admin/assigns">Ver assigns</a>
+                    <a class="dropdown-item" href="#!/admin/assigns">See assigns</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#!/admin/assigns/add">Agregar assigns</a>
+                    <a class="dropdown-item" href="#!/admin/assigns/add">Add assigns</a>
                   </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" ng-click="logout()">
+                      Logout
+                  </a>
                 </li>
             </ul>
           </div>

@@ -23,18 +23,23 @@ angular.module('adminApp', [
 .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/admin/students'});
+  $routeProvider.otherwise({redirectTo: '/admin'});
 
 }])
-.controller('NavController', ['$scope','authService',function($scope, authServcie) {
-  $scope.mi = "Q pdo";  
-  $scope.isAuth = authServcie.getIsAuthenticated();
+.controller('NavController', ['$scope','authService', '$rootScope', function($scope, authService, $rootScope) {
+  $rootScope.isAuth = authService.getValueAuthenticated();
+  console.log('isAuth', $scope.isAuth)
+  $scope.logout = function() {
+    authService.logout();
+    $rootScope.isAuth = authService.getValueAuthenticated();
+    console.log('logout1',$rootScope.isAuth)
+  }
 }])
 .run(function($rootScope, $location) {
   $rootScope.$on('$routeChangeError', function(event, current, previous, rejection){
       console.log("rejjectionk", rejection)
       if(rejection === 'AUTHENTICATED'){
-          $location.path('/admin/welcome');
+          $location.path('/admin');
       } else if(rejection === 'NOT_AUTHENTICATED') {
           $location.path('/admin/auth/signin');
       }

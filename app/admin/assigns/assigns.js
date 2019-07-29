@@ -7,17 +7,32 @@ angular.module('adminApp.assigns', ['ngRoute'])
   .when('/admin/assigns', 
   {
     templateUrl: 'admin/assigns/assigns.read.delete.html',
-    controller: 'ReadDeleteControllerAssigns'
+    controller: 'ReadDeleteControllerAssigns',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   .when('/admin/assigns/add', 
   {
     templateUrl: 'admin/assigns/assigns.add.html',
-    controller: 'AddControllerGradeAssigns'
+    controller: 'AddControllerGradeAssigns',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   .when('/admin/assigns/edit/:id', 
   {
     templateUrl: 'admin/assigns/assigns.edit.html',
-    controller: 'EditControllerAssigns'
+    controller: 'EditControllerAssigns',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   
 }])

@@ -7,7 +7,12 @@ angular.module('adminApp.dashboard', ['ngRoute'])
   .when('/admin', 
   {
     templateUrl: 'admin/dashboard/dashboard.html',
-    controller: 'adminController'
+    controller: 'adminController',
+    resolve: { 
+      'auth': function(authService) {
+          return authService.getIsAuthenticated()
+      }
+    }
   })
   
 }])

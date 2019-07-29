@@ -1,3 +1,4 @@
+
 <div class="container p-4">
     <div class="row">
         <div class="col-md-4 mx-auto">
@@ -6,18 +7,21 @@
                         <h3>SignIn</h3>
                     </div>
                     <div class="card-body">
-                        <form action="/signin" method="POST">
-                        <div class="form-group">
-                            <input type="username" name="username" placeholder="Username" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" placeholder="Password" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-success btn-block">
-                                SignIn
-                            </button>
-                        </div>
+                        <form name="formLogin">
+                            <div class="form-group">
+                                <input type="email" ng-focus="focusInput()" ng-model="formData.email" name="username" placeholder="Email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" ng-focus="focusInput()" ng-model="formData.password" name="password" placeholder="Password" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success btn-block" ng-click="submitLogin()">
+                                    SignIn
+                                </button>
+                            </div>
+                            <div class="form-group">
+                                <p ng-if="errors.show">{{errors.message}}</p>
+                            </div>
                         </form>
                     </div>
                 </div>

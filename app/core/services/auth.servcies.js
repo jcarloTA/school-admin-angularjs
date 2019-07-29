@@ -2,7 +2,7 @@
 
 angular.module('adminApp.authServices', [])
 
-.factory('authService', ['$http', '$q', 'Config', function($http, $q, Config, $location) {
+.factory('authService', ['$http', '$q', 'Config', '$location', function($http, $q, Config, $location) {
     var LOCAL_TOKEN_KEY = Config.name + "-user";
 
     var id = "";
@@ -64,46 +64,32 @@ angular.module('adminApp.authServices', [])
 
     function destroyUserCredentials() {
         id = "";
-
         isAuthenticated = false;
         $http.defaults.headers.common["Authorization"] = undefined;
         window.localStorage.clear();
     }
 
 
-    function login(body) {
+    function signup(body) {
         return $q(function(resolve, reject) {
-            var requestObject = {
-                email: body.email,
-                password: body.password
-            };
-            $http
-                .post(Config.URL + "/v1/register", requestObject)
-                .success(function(res) {
-                    console.log("respuesta en login:1 ", res);
-                    if (res.success) {
-                        if (res.test) {
-                            storeUserCredentials(res.token.token);
-                            resolve(res);
-                        } else {
-                            if (
-                                window.localStorage.getItem("testData") != null
-                            ) {
-                                storeUserCredentials(res.token.token);
-                                resolve(res);
-                            } else {
-                                resolve(null);
-                            }
-                        }
-                    } else {
-                        reject(res.error);
-                    }
-                })
-                .error(function(err) {
-                    console.log("error de conexion ", err);
-                    reject("Error de conexión");
-                });
-        });
+            $http.post(Config.apiUrl + '/users', body)
+            .then(function(res) {
+                resolve(res)
+            },function(err) {
+                reject(err);
+            })
+        })
+    };
+    function signin(body) {
+        return $q(function(resolve, reject) {
+            $http.post(Config.apiUrl + '/users/login', body)
+            .then(function(res) {
+                console.log('res login', res)
+                resolve(res)
+            },function(err) {
+                reject(err);
+            })
+        })
     };
 
     function getIsAuthenticated() {
@@ -111,7 +97,7 @@ angular.module('adminApp.authServices', [])
         return $q(function(resolve, reject){ 
             if(isAuthenticated)
                 resolve(isAuthenticated)
-            reject("AUTHENTICATED")
+            reject("NOT_AUTHENTICATED")
         })
     }
 
@@ -124,10 +110,22 @@ angular.module('adminApp.authServices', [])
         })
     }
 
+    function logout() {
+        destroyUserCredentials();
+        $location.path('/admin/auth/signin');
+    };
+
     loadUserCredentials();
     return {
+        getValueAuthenticated: function() {
+            return isAuthenticated
+        },
         getIsAuthenticated: getIsAuthenticated,
-        getIsNotAuthenticated: getIsNotAuthenticated
+        getIsNotAuthenticated: getIsNotAuthenticated,
+        signup: signup,
+        signin: signin,
+        logout: logout,
+        storeUserCredentials: storeUserCredentials
     }
     
 }])
