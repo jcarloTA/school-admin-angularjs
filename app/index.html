@@ -19,7 +19,7 @@
     <div ng-controller="NavController">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="navbar-brand" href="/">School Admin</a>
+          <a class="navbar-brand" href="#!/admin">School Admin</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -48,19 +48,19 @@
                     Teachers
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#!/links">See teachers</a>
+                    <a class="dropdown-item" href="#!/admin/teachers">See teachers</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#!/links/add">add teacher</a>
+                    <a class="dropdown-item" href="#!/admin/teachers/add">add teacher</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Grados
+                      Grades
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#!/links">See grades</a>
+                    <a class="dropdown-item" href="#!/admin/grades">See grades</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#!/links/add">Add grades</a>
+                    <a class="dropdown-item" href="#!/admin/grades/add">Add grades</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -68,9 +68,9 @@
                       Assigns
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#!/links">Ver assigns</a>
+                    <a class="dropdown-item" href="#!/admin/assigns">Ver assigns</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#!/links/add">Agregar assigns</a>
+                    <a class="dropdown-item" href="#!/admin/assigns/add">Agregar assigns</a>
                   </div>
                 </li>
             </ul>
@@ -95,6 +95,10 @@
     <!-- Routes -->
     <script src="admin/auth/auth.js"></script>
     <script src="admin/students/students.js"></script>
+    <script src="admin/dashboard/dashboard.js"></script>
+    <script src="admin/teachers/teachers.js"></script>
+    <script src="admin/grades/grades.js"></script>
+    <script src="admin/assigns/assigns.js"></script>
     
     <!-- Servcies -->
     <script src="core/services/auth.servcies.js"></script>

@@ -6,20 +6,12 @@ angular.module('adminApp.dashboard', ['ngRoute'])
   $routeProvider
   .when('/admin', 
   {
-    templateUrl: 'admin/auth/signup.html',
-    controller: 'SignupCrl',
-    resolve: { 
-      'auth': function(authService) {
-          return authService.isAuthenticated()
-      }
-    }
+    templateUrl: 'admin/dashboard/dashboard.html',
+    controller: 'adminController'
   })
   
 }])
 
-.controller('SignupCrl', ['$scope', function($scope) {
-    $scope.mi = "Q pdo"
-}])
-.controller('SigninCrl', ['$scope', function($scope) {
+.controller('adminController', ['$scope', function($scope) {
     $scope.mi = "Q pdo"
 }])

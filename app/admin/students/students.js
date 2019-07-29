@@ -7,22 +7,22 @@ angular.module('adminApp.students', ['ngRoute'])
   .when('/admin/students', 
   {
     templateUrl: 'admin/students/students.read.delete.html',
-    controller: 'ReadDeleteController'
+    controller: 'ReadDeleteControllerStudent'
   })
   .when('/admin/students/add', 
   {
     templateUrl: 'admin/students/students.add.html',
-    controller: 'AddController'
+    controller: 'AddControllerStudent'
   })
   .when('/admin/students/edit/:id', 
   {
     templateUrl: 'admin/students/students.edit.html',
-    controller: 'EdditController'
+    controller: 'EdditControllerStudent'
   })
   
 }])
 
-.controller('ReadDeleteController', ['$scope', 'studentsService', function($scope, studentsService) {
+.controller('ReadDeleteControllerStudent', ['$scope', 'studentsService', function($scope, studentsService) {
     $scope.studentsLists = []
     $scope.deleteStudent = function(student) {
       console.log("studnet de", student.id)
@@ -42,7 +42,7 @@ angular.module('adminApp.students', ['ngRoute'])
     setStudents();
 }])
 
-.controller('AddController', ['$scope', 'studentsService', 'moment','$location', function($scope, studentsService, moment, $location) {
+.controller('AddControllerStudent', ['$scope', 'studentsService', 'moment','$location', function($scope, studentsService, moment, $location) {
     $scope.dateBirthday = ''
     $scope.formData = {
       name:'',
@@ -66,7 +66,7 @@ angular.module('adminApp.students', ['ngRoute'])
 
 }])
 
-.controller('EdditController', ['$scope', 'studentsService', 'moment','$location', '$routeParams',function($scope, studentsService, moment, $location, $routeParams) {
+.controller('EdditControllerStudent', ['$scope', 'studentsService', 'moment','$location', '$routeParams',function($scope, studentsService, moment, $location, $routeParams) {
   var student_id = $routeParams.id
   $scope.dateBirthday = ''
   $scope.formData = {

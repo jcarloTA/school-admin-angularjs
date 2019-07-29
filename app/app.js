@@ -6,10 +6,15 @@ angular.module('adminApp', [
   'angularMoment',
   'adminApp.students',
   'adminApp.auth',
+  'adminApp.dashboard',
+  'adminApp.teachers',
+  'adminApp.grades',
+  'adminApp.assigns',
   'adminApp.authServices',
   'adminApp.gradesServices',
   'adminApp.studentsServices',
   'adminApp.teachersServices',
+  'adminApp.assignsServices',
 ])
 .constant("Config", {
   apiUrl: "http://localhost:3000",

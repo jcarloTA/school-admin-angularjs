@@ -1,0 +1,36 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h3>Add assign</h3>
+                    </div>
+                    <div class="card-body">
+                        <form name="formAdd" method="POST">
+                            <div class="form-group">
+                                <label for="name">Write section:</label>
+                                <input type="text" name="section" placeholder="Section" ng-model="formData.section" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Shoose grade:</label>
+                                <select class="form-control" required  ng-model="formData.grade_id" >
+                                    <option ng-repeat="grade in gradesLists" value="{{grade.id}}">{{grade.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Shoose student:</label>
+                                <select class="form-control" required  ng-model="formData.student_id" >
+                                    <option ng-repeat="student in studentsLists" value="{{student.id}}">{{student.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success btn-block" ng-click="addSubmit(formData)">
+                                    Add
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
